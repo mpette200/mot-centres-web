@@ -43,7 +43,7 @@
 var pcd = postcodeData;
 pcd.PATH_P = 'data/codepoint/Data/';
 pcd.PATH_MOT = 'data/mot/mot-vehicle-testing-stations.json';
-var N_TO_LIST = 100;
+var N_TO_LIST = 300;
 
 var box_in = document.getElementById('box_in');
 var btn_proc = document.getElementById('btn_proc');
@@ -90,18 +90,15 @@ var showStations = function() {
 };
 
 var load_table = function() {
-  var fields = [
-    'Distance',
-    'Name',
-    'Address',
-    'Postcode'
-  ];
+  
   tbl_out.innerHTML = '';
 
   var new_row = tbl_out.insertRow();
-  for (var heading of fields) {
-    new_row.innerHTML += '<th>' + heading + '</th>';
-  }
+  new_row.innerHTML =
+    '<th>Distance</th>'
+  + '<th>Name</th>'
+  + '<th>Address</th>'
+  + '<th>Postcode</th>';
 
   var n = Math.min(N_TO_LIST, pcd.stations.length);
   for (var i=0; i < n; i++) {
