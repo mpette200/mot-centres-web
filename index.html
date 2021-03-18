@@ -21,10 +21,12 @@
   </p>
 </div>
 <div>
-  <input
-    type="text" id="box_in" name="fnbox" size="35"
-    placeholder="Enter Postcode">
-  <button id="btn_proc">Search Postcode</button>
+  <form id="frm_a">
+    <input
+      type="text" id="box_in" name="fnbox" size="35"
+      placeholder="Enter Postcode">
+    <button type="submit" id="btn_proc">Search Postcode</button>
+  </form>
 </div>
 
 <div>
@@ -49,6 +51,7 @@ var box_in = document.getElementById('box_in');
 var btn_proc = document.getElementById('btn_proc');
 var tbl_out = document.getElementById('tbl_out');
 var loadingSpinner = document.getElementById('spinner');
+var frm_a = document.getElementById('frm_a');
 
 var showLoadingSpinner = function() {
   btn_proc.disabled = true;
@@ -115,12 +118,10 @@ var load_table = function() {
 
 };
 
-btn_proc.onclick = btn_handler;
-box_in.onkeydown = function(e) {
-  if (e.code == 'Enter' && !btn_proc.disabled) {
-    btn_proc.onclick();
-  }
-};
+frm_a.addEventListener('submit', function(e) {
+  e.preventDefault();
+  btn_handler();
+});
 
 </script>
 </body>
